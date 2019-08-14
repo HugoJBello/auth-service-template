@@ -1,0 +1,62 @@
+2019/06/24 17:29:55 Starting server on port 8000
+2019/06/24 17:30:04 Mon Jun 24 17:30:04 CEST 2019 --> POST /api/user/login 
+2019/06/24 18:07:55 Starting server on port 8000
+2019/06/24 18:08:03 Mon Jun 24 18:08:03 CEST 2019 --> POST /api/user/login 
+2019/06/26 09:26:28 Starting server on port 8000
+2019/06/26 09:26:41 Wed Jun 26 09:26:41 CEST 2019 --> POST /api/user/register 
+2019/06/26 09:26:51 Wed Jun 26 09:26:51 CEST 2019 --> POST /api/user/register 
+2019/06/26 09:39:06 Wed Jun 26 09:39:06 CEST 2019 --> POST /api/user/register 
+2019/06/26 09:39:17 Wed Jun 26 09:39:17 CEST 2019 --> POST /api/user/login 
+2019/06/26 09:44:12 Starting server on port 8000
+2019/06/26 09:44:23 Wed Jun 26 09:44:23 CEST 2019 --> POST /api/user/register 
+2019/06/26 09:44:27 Wed Jun 26 09:44:27 CEST 2019 --> POST /api/user/login 
+2019/06/26 09:49:11 Starting server on port 8000
+2019/06/26 09:49:15 Wed Jun 26 09:49:15 CEST 2019 --> POST /api/user/login 
+2019/06/26 09:50:27 Wed Jun 26 09:50:27 CEST 2019 --> POST /api/user/login 
+2019/06/26 09:51:08 Wed Jun 26 09:51:08 CEST 2019 --> POST /api/user/login 
+2019/06/26 09:52:06 Wed Jun 26 09:52:06 CEST 2019 --> POST /api/user/login 
+2019/06/26 09:52:45 Wed Jun 26 09:52:45 CEST 2019 --> POST /api/user/login 
+2019/06/26 09:53:05 Wed Jun 26 09:53:05 CEST 2019 --> POST /api/user/login 
+2019/06/26 09:53:18 Wed Jun 26 09:53:18 CEST 2019 --> POST /api/user/login 
+2019/06/26 09:54:40 Starting server on port 8000
+2019/06/26 09:59:59 Starting server on port 8000
+2019/06/26 10:00:06 Wed Jun 26 10:00:06 CEST 2019 --> POST /api/user/login 
+2019/06/26 10:02:25 Starting server on port 8000
+2019/06/26 10:03:12 Wed Jun 26 10:03:12 CEST 2019 --> POST /api/user/login 
+2019/06/26 10:03:35 Wed Jun 26 10:03:35 CEST 2019 --> POST /api/user/login 
+2019/06/26 10:05:43 Wed Jun 26 10:05:43 CEST 2019 --> POST /api/user/register 
+2019/06/26 10:06:49 Wed Jun 26 10:06:49 CEST 2019 --> POST /api/user/login 
+2019/06/26 10:07:05 Wed Jun 26 10:07:05 CEST 2019 --> POST /api/user/register 
+2019/06/26 10:10:06 Starting server on port 8000
+2019/06/26 10:10:13 Wed Jun 26 10:10:13 CEST 2019 --> POST /api/user/login 
+2019/06/26 10:10:29 Wed Jun 26 10:10:29 CEST 2019 --> POST /api/user/register 
+2019/06/26 10:10:33 Wed Jun 26 10:10:33 CEST 2019 --> POST /api/user/login 
+2019/06/26 10:14:39 Starting server on port 8000
+2019/06/26 10:14:49 Wed Jun 26 10:14:49 CEST 2019 --> POST /api/user/register 
+2019/06/26 10:14:59 Wed Jun 26 10:14:59 CEST 2019 --> POST /api/user/login 
+2019/06/26 10:15:28 Wed Jun 26 10:15:28 CEST 2019 --> POST /api/user/login 
+2019/06/26 10:16:17 Wed Jun 26 10:16:17 CEST 2019 --> POST /api/user/login 
+2019/06/26 10:16:43 Wed Jun 26 10:16:43 CEST 2019 --> POST /api/user/register 
+2019/06/26 10:16:56 Wed Jun 26 10:16:56 CEST 2019 --> POST /api/user/login 
+2019/06/26 10:17:05 Wed Jun 26 10:17:05 CEST 2019 --> POST /api/user/login 
+2019/06/26 10:17:19 Wed Jun 26 10:17:19 CEST 2019 --> POST /api/user/login 
+2019/06/26 10:17:23 Wed Jun 26 10:17:23 CEST 2019 --> POST /api/user/login 
+2019/06/26 11:01:41 Starting server on port 8000
+2019/06/26 11:01:52 Wed Jun 26 11:01:52 CEST 2019 --> POST /api/user/login 
+2019/06/26 11:01:56 Wed Jun 26 11:01:56 CEST 2019 --> POST /api/user/login 
+2019/06/26 11:39:31 Starting server on port 8000
+2019/06/26 11:39:40 Wed Jun 26 11:39:40 CEST 2019 --> POST /api/user/login 
+2019/06/26 11:39:59 Wed Jun 26 11:39:59 CEST 2019 --> POST /api/user/register 
+2019/06/26 11:40:03 Wed Jun 26 11:40:03 CEST 2019 --> POST /api/user/login 
+2019/06/26 11:40:18 Wed Jun 26 11:40:18 CEST 2019 --> POST /api/user/login 
+2019/06/26 11:54:19 Wed Jun 26 11:54:19 CEST 2019 --> POST /api/user/login 
+2019/06/26 11:55:16 Wed Jun 26 11:55:16 CEST 2019 --> POST /api/user/login 
+2019/06/26 11:55:22 Wed Jun 26 11:55:22 CEST 2019 --> POST /api/user/login 
+2019/06/26 11:55:35 Wed Jun 26 11:55:35 CEST 2019 --> POST /api/user/login 
+2019/06/26 11:58:41 Wed Jun 26 11:58:41 CEST 2019 --> POST /api/user/login 
+2019/06/26 12:01:12 Wed Jun 26 12:01:12 CEST 2019 --> POST /api/user/login 
+2019/06/26 12:01:21 Wed Jun 26 12:01:21 CEST 2019 --> POST /api/user/login 
+2019/06/26 12:01:47 Wed Jun 26 12:01:47 CEST 2019 --> POST /api/user/login 
+2019/06/26 12:07:17 Wed Jun 26 12:07:17 CEST 2019 --> POST /api/user/login 
+2019/06/26 12:13:53 Wed Jun 26 12:13:53 CEST 2019 --> POST /api/user/login 
+2019/06/26 12:23:11 Wed Jun 26 12:23:11 CEST 2019 --> POST /api/user/login 

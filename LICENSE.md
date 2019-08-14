@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2019 Hugo J. Bello
+Copyright (c) 2019 Adigun Hammed Olalekan
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
