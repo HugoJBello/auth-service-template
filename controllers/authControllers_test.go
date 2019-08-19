@@ -31,6 +31,12 @@ func TestCreateUser(t *testing.T) {
 }
 
 func TestLogIn(t *testing.T) {
+	response := LogInHelperMux()
+	assert.Equal(t, 200, response.Code, "OK response is expected")
+	fmt.Println(response.Body)
+}
+
+func LogInHelperMux() (response *httptest.ResponseRecorder) {
 	mux := http.NewServeMux()
 	server := httptest.NewServer(mux)
 	defer server.Close()
@@ -40,9 +46,8 @@ func TestLogIn(t *testing.T) {
 	json, _ := json.Marshal(body)
 
 	request, _ := http.NewRequest("POST", "/api/user/login", bytes.NewBuffer(json))
-	response := httptest.NewRecorder()
+	response = httptest.NewRecorder()
 
 	mux.ServeHTTP(response, request)
-	assert.Equal(t, 200, response.Code, "OK response is expected")
-	fmt.Println(response.Body)
+	return response
 }

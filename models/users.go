@@ -21,10 +21,12 @@ type Token struct {
 
 //a struct to rep user user
 type User struct {
-	Username string `bson:"username" json:"username,omitempty"`
-	Password string `bson:"password" json:"password,omitempty"`
-	Token    string `bson:"token" json:"token,omitempty"`
-	ID       string `bson:"_id,omitempty" json:"_id,omitempty"`
+	Username string   `bson:"username" json:"username,omitempty"`
+	Password string   `bson:"password" json:"password,omitempty"`
+	Token    string   `bson:"token" json:"token,omitempty"`
+	ID       string   `bson:"_id,omitempty" json:"_id,omitempty"`
+	Email    string   `json: "email"`
+	Role     []string `json: "role"`
 }
 
 //Validate incoming user details...
