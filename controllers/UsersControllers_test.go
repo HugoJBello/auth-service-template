@@ -3,7 +3,6 @@ package controllers
 import (
 	middlewares "auth-service-template/middlewares"
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -31,11 +30,10 @@ func TestListUsers(t *testing.T) {
 	router.ServeHTTP(response, request)
 
 	assert.Equal(t, 200, response.Code, "OK response is expected")
-	fmt.Println(response.Body)
-
 }
 
 func ObtainTokenForTesting() (error, string) {
+	_ = SignInHelperMux()
 	loginResponse := LogInHelperMux()
 	body, _ := ioutil.ReadAll(loginResponse.Body)
 	bodyMap := make(map[string]map[string]string)

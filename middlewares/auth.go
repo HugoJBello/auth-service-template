@@ -2,8 +2,8 @@ package middlewares
 
 import (
 	"auth-service-template/models"
-	u "auth-service-template/utils"
 	"context"
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"os"
@@ -34,7 +34,7 @@ var JwtAuthentication = func(next http.Handler) http.Handler {
 			response = map[string]interface{}{"status": false, "message": "missing auth token"}
 			w.WriteHeader(http.StatusForbidden)
 			w.Header().Add("Content-Type", "application/json")
-			u.Respond(w, response)
+			json.NewEncoder(w).Encode(response)
 			return
 		}
 
@@ -43,7 +43,7 @@ var JwtAuthentication = func(next http.Handler) http.Handler {
 			response = map[string]interface{}{"status": false, "message": "Invalid/Malformed auth token"}
 			w.WriteHeader(http.StatusForbidden)
 			w.Header().Add("Content-Type", "application/json")
-			u.Respond(w, response)
+			json.NewEncoder(w).Encode(response)
 			return
 		}
 
@@ -58,15 +58,15 @@ var JwtAuthentication = func(next http.Handler) http.Handler {
 			response = map[string]interface{}{"status": false, "message": "Invalid/Malformed auth token"}
 			w.WriteHeader(http.StatusForbidden)
 			w.Header().Add("Content-Type", "application/json")
-			u.Respond(w, response)
+			json.NewEncoder(w).Encode(response)
 			return
 		}
 
 		if !token.Valid { //Token is invalid, maybe not signed on this server
-			response = u.Message(false, "Token is not valid.")
+			response = map[string]interface{}{"status": true, "message": "Token is not valid."}
 			w.WriteHeader(http.StatusForbidden)
 			w.Header().Add("Content-Type", "application/json")
-			u.Respond(w, response)
+			json.NewEncoder(w).Encode(response)
 			return
 		}
 
