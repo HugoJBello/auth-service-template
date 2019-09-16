@@ -60,3 +60,4 @@
 2019/06/26 12:07:17 Wed Jun 26 12:07:17 CEST 2019 --> POST /api/user/login 
 2019/06/26 12:13:53 Wed Jun 26 12:13:53 CEST 2019 --> POST /api/user/login 
 2019/06/26 12:23:11 Wed Jun 26 12:23:11 CEST 2019 --> POST /api/user/login 
+2019/08/19 16:09:21 Starting server on port 8000

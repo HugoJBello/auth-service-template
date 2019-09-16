@@ -14,9 +14,9 @@ require (
 	github.com/stretchr/testify v1.3.0
 	github.com/xdg/scram v0.0.0-20180814205039-7eeb5667e42c // indirect
 	github.com/xdg/stringprep v1.0.0 // indirect
-	go.mongodb.org/mongo-driver v1.0.0
+	go.mongodb.org/mongo-driver v1.1.0
 	golang.org/x/crypto v0.0.0-20190404164418-38d8ce5564a5
 	golang.org/x/sync v0.0.0-20190227155943-e225da77a7e6 // indirect
 	google.golang.org/appengine v1.5.0 // indirect
-	gopkg.in/mgo.v2 v2.0.0-20180705113604-9856a29383ce
+	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
 )

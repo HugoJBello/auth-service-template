@@ -70,10 +70,31 @@ var JwtAuthentication = func(next http.Handler) http.Handler {
 			return
 		}
 
+		if strings.Contains(requestPath, "/admin/") && !checkAdminRoute(requestPath, tk.UserId) {
+			response = map[string]interface{}{"status": true, "message": "You are not Admin."}
+			w.WriteHeader(http.StatusForbidden)
+			w.Header().Add("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(response)
+		}
+
 		//Everything went well, proceed with the request and set the caller to the user retrieved from the parsed token
 		fmt.Sprintf("User %", tk.UserId) //Useful for monitoring
 		ctx := context.WithValue(r.Context(), "user", tk.UserId)
 		r = r.WithContext(ctx)
 		next.ServeHTTP(w, r) //proceed in the middleware chain!
 	})
+}
+
+func checkAdminRoute(requestPath string, userId string) bool {
+	user := models.GetUser(userId)
+	return isAdminRole(user.Role)
+}
+
+func isAdminRole(role []string) bool {
+	for _, b := range role {
+		if "ADMIN" == b {
+			return true
+		}
+	}
+	return false
 }

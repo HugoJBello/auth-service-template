@@ -4,9 +4,11 @@ import (
 	u "auth-service-template/utils"
 	"context"
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/dgrijalva/jwt-go"
+	options "go.mongodb.org/mongo-driver/mongo/options"
 	"golang.org/x/crypto/bcrypt"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -133,4 +135,31 @@ func GetUser(u string) *User {
 
 	acc.Password = ""
 	return acc
+}
+
+func GetUsers(limit int, skip int) []User {
+
+	db := GetDB()
+	collection := db.Collection("users")
+	users := []User{}
+	limitOption := int64(limit)
+	skipOption := int64(skip)
+	findOptions := options.FindOptions{Limit: &limitOption, Skip: &skipOption}
+	cur, err := collection.Find(context.Background(), bson.M{}, &findOptions)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	for cur.Next(context.Background()) {
+
+		// create a value into which the single document can be decoded
+		var user User
+		err := cur.Decode(&user)
+		if err != nil {
+			log.Fatal(err)
+		}
+		users = append(users, user)
+	}
+
+	return users
 }
