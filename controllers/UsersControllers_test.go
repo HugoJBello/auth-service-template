@@ -3,6 +3,7 @@ package controllers
 import (
 	middlewares "auth-service-template/middlewares"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -40,6 +41,7 @@ func ObtainTokenForTesting() (error, string) {
 	err := json.Unmarshal(body, &bodyMap)
 
 	token := "Bearer " + bodyMap["user"]["token"]
+	fmt.Println(token)
 
 	return err, token
 }
