@@ -44,7 +44,7 @@ func LogInHelperMux() (response *httptest.ResponseRecorder) {
 	defer server.Close()
 
 	mux.HandleFunc("/api/user/login", Authenticate)
-	body := models.User{Username: "testAdmin", Password: "password2"}
+	body := models.User{Username: "testAdmin", Password: "password2", ID: "2222"}
 	json, _ := json.Marshal(body)
 
 	request, _ := http.NewRequest("POST", "/api/user/login", bytes.NewBuffer(json))

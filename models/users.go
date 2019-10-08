@@ -17,7 +17,8 @@ import (
 JWT claims struct
 */
 type Token struct {
-	UserId string
+	UserId   string
+	Username string
 	jwt.StandardClaims
 }
 
@@ -26,7 +27,7 @@ type User struct {
 	Username string   `bson:"username" json:"username,omitempty"`
 	Password string   `bson:"password" json:"password,omitempty"`
 	Token    string   `bson:"token" json:"token,omitempty"`
-	ID       string   `bson:"_id,omitempty" json:"_id,omitempty"`
+	ID       string   `json:"id,omitempty"`
 	Email    string   `json: "email"`
 	Role     []string `json: "role"`
 }
@@ -112,7 +113,11 @@ func Login(username, password string) (resp map[string]interface{}, code int) {
 	user.Password = ""
 	user.Username = foundUser.Username
 	//Create JWT token
-	tk := &Token{UserId: user.ID}
+	tk := &Token{UserId: foundUser.ID, Username: foundUser.Username}
+	fmt.Println("User")
+	fmt.Println(user)
+
+	fmt.Println(tk)
 	token := jwt.NewWithClaims(jwt.GetSigningMethod("HS256"), tk)
 	tokenString, _ := token.SignedString([]byte(os.Getenv("token_password")))
 	user.Token = tokenString //Store the token in the response
