@@ -3,19 +3,22 @@ package models
 import (
 	"context"
 	"fmt"
+	"os"
+	"time"
+
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"os"
-	"time"
 )
 
 var db *mongo.Database
+
 func init() {
 
 	e := godotenv.Load()
 	if e != nil {
+		e := godotenv.Load("../.env")
 		fmt.Print(e)
 	}
 

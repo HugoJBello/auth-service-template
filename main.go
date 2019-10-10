@@ -10,6 +10,7 @@ import (
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+	"github.com/joho/godotenv"
 )
 
 const logPath = "logs.log"
@@ -17,6 +18,8 @@ const logPath = "logs.log"
 var Logger *log.Logger
 
 func main() {
+
+	godotenv.Load()
 
 	InitLogger()
 
