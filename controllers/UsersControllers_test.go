@@ -2,6 +2,7 @@ package controllers
 
 import (
 	middlewares "auth-service-template/middlewares"
+	"auth-service-template/models"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -37,10 +38,10 @@ func ObtainTokenForTesting() (error, string) {
 	_ = SignInHelperMux()
 	loginResponse := LogInHelperMux()
 	body, _ := ioutil.ReadAll(loginResponse.Body)
-	bodyMap := make(map[string]map[string]string)
+	bodyMap := models.UserResponse{}
 	err := json.Unmarshal(body, &bodyMap)
 
-	token := "Bearer " + bodyMap["user"]["token"]
+	token := "Bearer " + bodyMap.Data[0].Token
 	fmt.Println(token)
 
 	return err, token

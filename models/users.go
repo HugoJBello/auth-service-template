@@ -1,8 +1,8 @@
 package models
 
 import (
-	u "auth-service-template/utils"
 	"context"
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -32,15 +32,23 @@ type User struct {
 	Role     []string `json: "role"`
 }
 
+//a struct to rep user user
+type UserResponse struct {
+	Code    int
+	Message string
+	Data    []User
+}
+
+
 //Validate incoming user details...
-func (user *User) Validate() (map[string]interface{}, bool) {
+func (user *User) Validate() (error, bool) {
 
 	if user.Username == "" {
-		return u.Message(false, "Username address is required"), false
+		return errors.New("error, empty username"), false
 	}
 
 	if len(user.Password) < 2 {
-		return u.Message(false, "Password is required"), false
+		return errors.New("error, password too short"), false
 	}
 
 	//check for errors and duplicate Usernames
@@ -54,13 +62,13 @@ func (user *User) Validate() (map[string]interface{}, bool) {
 	}
 
 	if foundUser.Username != "" {
-		return u.Message(false, "Username address already in use by another user."), false
+		return errors.New("error, username in use"), false
 	}
 
-	return u.Message(false, "Requirement passed"), true
+	return nil, true
 }
 
-func (user *User) Create() map[string]interface{} {
+func (user *User) Create() error {
 
 	if resp, ok := user.Validate(); !ok {
 		return resp
@@ -77,7 +85,7 @@ func (user *User) Create() map[string]interface{} {
 	fmt.Println(res)
 
 	if err != nil {
-		return u.Message(false, "Failed to create user, connection error.")
+		return err
 	}
 
 	//Create new JWT token for the newly registered user
@@ -90,24 +98,22 @@ func (user *User) Create() map[string]interface{} {
 
 	user.Password = "" //delete password
 
-	response := u.Message(true, "User has been created")
-	response["user"] = user
-	return response
+	return nil
 }
 
-func Login(username, password string) (resp map[string]interface{}, code int) {
-	user := &User{}
+func Login(username, password string) (error, User) {
+	user := User{}
 	db := GetDB()
 	collection := db.Collection("users")
 	foundUser := &User{}
 	err := collection.FindOne(context.Background(), bson.M{"username": username}).Decode(foundUser)
 	if err != nil {
 		fmt.Println(err)
-		return u.Message(false, "Invalid login credentials. Please try again"), 401
+		return errors.New("Invalid login credentials. Please try again"), User{}
 	}
 	err = bcrypt.CompareHashAndPassword([]byte(foundUser.Password), []byte(password))
 	if err != nil && err == bcrypt.ErrMismatchedHashAndPassword { //Password does not match!
-		return u.Message(false, "Invalid login credentials. Please try again"), 401
+		return errors.New("Invalid login credentials. Please try again"), User{}
 	}
 	//Worked! Logged In
 	user.Password = ""
@@ -122,18 +128,16 @@ func Login(username, password string) (resp map[string]interface{}, code int) {
 	tokenString, _ := token.SignedString([]byte(os.Getenv("token_password")))
 	user.Token = tokenString //Store the token in the response
 
-	resps := u.Message(true, "Logged In")
-	resps["user"] = user
-	return resps, 200
+	return nil, user
 }
 
-func GetUser(u string) *User {
+func GetUser(username string) *User {
 
 	acc := &User{}
 	db := GetDB()
 	collection := db.Collection("users")
 	foundUser := User{}
-	err := collection.FindOne(context.Background(), bson.M{"_d": foundUser.ID}).Decode(foundUser)
+	err := collection.FindOne(context.Background(), bson.M{"username": username}).Decode(foundUser)
 	if err != nil { //User not found!
 		return nil
 	}

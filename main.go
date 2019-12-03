@@ -28,8 +28,7 @@ func main() {
 	router.HandleFunc("/api/user/register", controllers.CreateUser).Methods("POST")
 
 	router.HandleFunc("/api/user/login", controllers.Authenticate).Methods("POST")
-	router.HandleFunc("/api/contacts/new", controllers.CreateContact).Methods("POST")
-	router.HandleFunc("/api/me/contacts", controllers.GetContactsFor).Methods("GET")
+
 	router.HandleFunc("/api/user/list", controllers.ListUsers).Queries("limit", "{limit}", "skip", "{skip}").Methods("GET")
 
 	router.Use(middlewares.MiddlewareLogger)  //attach JWT auth middleware

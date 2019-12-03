@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"auth-service-template/models"
-	u "auth-service-template/utils"
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"strconv"
@@ -20,5 +20,7 @@ var ListUsers = func(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(skip)
 	fmt.Println(users)
 	fmt.Println(user)
-	u.Respond(w, nil)
+	response := models.UserResponse{Code: 200, Message: "users retrieved", Data: users}
+	w.Header().Add("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
 }

@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"auth-service-template/models"
+	"auth-service-template/utils"
 	"bytes"
 	"encoding/json"
 	"net/http"
@@ -10,6 +10,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 )
+
 
 func TestCreateUser(t *testing.T) {
 	response := SignInHelperMux()
@@ -28,7 +29,8 @@ func SignInHelperMux() (response *httptest.ResponseRecorder) {
 	defer server.Close()
 
 	mux.HandleFunc("/api/user/new", CreateUser)
-	body := models.User{Username: "testAdmin", Password: "password2", Role: []string{"ADMIN"}}
+	usersTesting, _ := utils.GetUsersForTesting()
+	body := usersTesting[0]
 	json, _ := json.Marshal(body)
 
 	request, _ := http.NewRequest("POST", "/api/user/new", bytes.NewBuffer(json))
@@ -44,7 +46,8 @@ func LogInHelperMux() (response *httptest.ResponseRecorder) {
 	defer server.Close()
 
 	mux.HandleFunc("/api/user/login", Authenticate)
-	body := models.User{Username: "testAdmin", Password: "password2", ID: "2222"}
+	usersTesting, _ := utils.GetUsersForTesting()
+	body := usersTesting[0]
 	json, _ := json.Marshal(body)
 
 	request, _ := http.NewRequest("POST", "/api/user/login", bytes.NewBuffer(json))
