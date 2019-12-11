@@ -23,10 +23,11 @@ func init() {
 	}
 
 	dbAddress := os.Getenv("database_url")
+	dbName := os.Getenv("user_database_name")
 
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 	client, _ := mongo.Connect(ctx, options.Client().ApplyURI(dbAddress))
-	db = client.Database("testing")
+	db = client.Database(dbName)
 }
 
 func GetDB() *mongo.Database {

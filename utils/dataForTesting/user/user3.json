@@ -1,0 +1,11 @@
+{
+  "username": "test-user3",
+  "id": "test-user3",
+  "password": "testpw12345",
+  "role": ["NONE"],
+  "email": "test3@email.com",
+  "organization_permission": [{
+    "organization_id": "organization_test2",
+    "organization_role": "ADMIN"
+  }]
+}

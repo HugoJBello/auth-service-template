@@ -12,10 +12,12 @@ var usersExamples = []models.User{}
 
 func init(){
 	usersExamples, _ = GetUsersForTesting()
-
+	for _, user := range(usersExamples){
+		user.CreateOrUpdateWithPlainPw()
+	}
 }
 
-func GetUsersForTesting() (individual []models.User, err error) {
+func GetUsersForTesting() (users []models.User, err error) {
 	if len(usersExamples) == 0 {
 		root := "../utils/dataForTesting/user"
 		files, _ := ioutil.ReadDir(root)

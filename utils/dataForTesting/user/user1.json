@@ -1,6 +1,11 @@
 {
   "username": "test-user",
+  "id": "test-user",
   "password": "testpw1234",
-  "role": ["ADMIN"],
-  "email": "test@email.com"
+  "role": ["SUPER"],
+  "email": "test@email.com",
+  "organization_permission": [{
+    "organization_id": "organization_test1",
+    "organization_role": "ADMIN"
+  }]
 }

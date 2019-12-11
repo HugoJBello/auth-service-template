@@ -3,10 +3,8 @@ package controllers
 import (
 	"auth-service-template/models"
 	"encoding/json"
-	"fmt"
 	"net/http"
 )
-
 
 var CreateUser = func(w http.ResponseWriter, r *http.Request) {
 
@@ -19,7 +17,6 @@ var CreateUser = func(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(response)
 		return
 	}
-	fmt.Println(*account)
 
 	err = account.Create() //Create account
 	var response models.UserResponse
@@ -46,7 +43,6 @@ var Authenticate = func(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println(*account)
 	var response models.UserResponse
 	err, user := models.Login(account.Username, account.Password)
 

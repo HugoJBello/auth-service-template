@@ -24,12 +24,18 @@ type Token struct {
 
 //a struct to rep user user
 type User struct {
-	Username string   `bson:"username" json:"username,omitempty"`
-	Password string   `bson:"password" json:"password,omitempty"`
-	Token    string   `bson:"token" json:"token,omitempty"`
-	ID       string   `json:"id,omitempty"`
-	Email    string   `json: "email"`
-	Role     []string `json: "role"`
+	Username               string                   `bson:"username" json:"username,omitempty"`
+	Password               string                   `bson:"password,omitempty" json:"password,omitempty"`
+	Token                  string                   `bson:"token" json:"token,omitempty"`
+	ID                     string                   `bson:"id,omitempty" json:"id,omitempty"`
+	Email                  string                   `bson:"email,omitempty" json:"email,omitempty"`
+	Role                   []string                 `bson:"role,omitempty" json:"role,omitempty"`
+	OrganizationPermission []OrganizationPermission `bson:"organization_permission,omitempty" json:"organization_permission,omitempty"`
+}
+
+type OrganizationPermission struct {
+	OrganizationId   string `bson:"organization_id,omitempty" json:"organization_id,omitempty"`
+	OrganziationRole string `bson:"organization_role,omitempty" json:"organization_role,omitempty"`
 }
 
 //a struct to rep user user
@@ -39,6 +45,7 @@ type UserResponse struct {
 	Data    []User
 }
 
+var collectionNameUsers = "users"
 
 //Validate incoming user details...
 func (user *User) Validate() (error, bool) {
@@ -53,7 +60,7 @@ func (user *User) Validate() (error, bool) {
 
 	//check for errors and duplicate Usernames
 	db := GetDB()
-	collection := db.Collection("users")
+	collection := db.Collection(collectionNameUsers)
 	foundUser := &User{}
 	err := collection.FindOne(context.Background(), bson.M{"username": user.Username}).Decode(foundUser)
 
@@ -68,6 +75,57 @@ func (user *User) Validate() (error, bool) {
 	return nil, true
 }
 
+func (user *User) CreateOrUpdateWithPlainPw() error {
+	db := GetDB()
+
+	collection := db.Collection(collectionNameUsers)
+	filter := bson.M{"id": &user.ID}
+
+	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
+	user.Password = string(hashedPassword)
+	update := bson.M{"$set": user}
+
+	_, err := collection.UpdateOne(context.Background(), filter, update, options.Update().SetUpsert(true))
+
+	if err != nil {
+		log.Fatal(err)
+		return err
+
+	}
+	return nil
+}
+
+func UpdateOrganizationInUser(organization []OrganizationPermission, userId string) error {
+	db := GetDB()
+
+	collection := db.Collection(collectionNameUsers)
+	filter := bson.M{"id": userId}
+	update := bson.M{"$set": bson.M{"organization_permission": organization}}
+
+	_, err := collection.UpdateOne(context.Background(), filter, update, options.Update().SetUpsert(false))
+	if err != nil {
+		log.Fatal(err)
+		return err
+
+	}
+	return nil
+}
+
+func UpdateRoleInUser(role []string, userId string) error {
+	db := GetDB()
+	collection := db.Collection(collectionNameUsers)
+	filter := bson.M{"id": userId}
+	update := bson.M{"$set": bson.M{"role": role}}
+
+	_, err := collection.UpdateOne(context.Background(), filter, update, options.Update().SetUpsert(true))
+	if err != nil {
+		log.Fatal(err)
+		return err
+
+	}
+	return nil
+}
+
 func (user *User) Create() error {
 
 	if resp, ok := user.Validate(); !ok {
@@ -80,7 +138,7 @@ func (user *User) Create() error {
 	user.Password = string(hashedPassword)
 
 	db := GetDB()
-	collection := db.Collection("users")
+	collection := db.Collection(collectionNameUsers)
 	res, err := collection.InsertOne(context.Background(), user)
 	fmt.Println(res)
 
@@ -104,7 +162,7 @@ func (user *User) Create() error {
 func Login(username, password string) (error, User) {
 	user := User{}
 	db := GetDB()
-	collection := db.Collection("users")
+	collection := db.Collection(collectionNameUsers)
 	foundUser := &User{}
 	err := collection.FindOne(context.Background(), bson.M{"username": username}).Decode(foundUser)
 	if err != nil {
@@ -120,10 +178,6 @@ func Login(username, password string) (error, User) {
 	user.Username = foundUser.Username
 	//Create JWT token
 	tk := &Token{UserId: foundUser.ID, Username: foundUser.Username}
-	fmt.Println("User")
-	fmt.Println(user)
-
-	fmt.Println(tk)
 	token := jwt.NewWithClaims(jwt.GetSigningMethod("HS256"), tk)
 	tokenString, _ := token.SignedString([]byte(os.Getenv("token_password")))
 	user.Token = tokenString //Store the token in the response
@@ -133,23 +187,31 @@ func Login(username, password string) (error, User) {
 
 func GetUser(username string) *User {
 
-	acc := &User{}
 	db := GetDB()
-	collection := db.Collection("users")
-	foundUser := User{}
+	collection := db.Collection(collectionNameUsers)
+	foundUser := &User{}
 	err := collection.FindOne(context.Background(), bson.M{"username": username}).Decode(foundUser)
 	if err != nil { //User not found!
 		return nil
 	}
+	return foundUser
+}
 
-	acc.Password = ""
-	return acc
+func GetUserById(id string) *User {
+	db := GetDB()
+	collection := db.Collection(collectionNameUsers)
+	foundUser := &User{}
+	err := collection.FindOne(context.Background(), bson.M{"id": id}).Decode(foundUser)
+	if err != nil { //User not found!
+		return nil
+	}
+	return foundUser
 }
 
 func GetUsers(limit int, skip int) []User {
 
 	db := GetDB()
-	collection := db.Collection("users")
+	collection := db.Collection(collectionNameUsers)
 	users := []User{}
 	limitOption := int64(limit)
 	skipOption := int64(skip)
@@ -162,6 +224,32 @@ func GetUsers(limit int, skip int) []User {
 	for cur.Next(context.Background()) {
 
 		// create a value into which the single document can be decoded
+		var user User
+		err := cur.Decode(&user)
+		if err != nil {
+			log.Fatal(err)
+		}
+		users = append(users, user)
+	}
+
+	return users
+}
+
+func GetUsersInOrg(limit int, skip int, organizationId string) []User {
+
+	db := GetDB()
+	collection := db.Collection(collectionNameUsers)
+	users := []User{}
+	limitOption := int64(limit)
+	skipOption := int64(skip)
+	filter := bson.M{"organization_permission.organization_id": organizationId}
+	findOptions := options.FindOptions{Limit: &limitOption, Skip: &skipOption}
+	cur, err := collection.Find(context.Background(), filter, &findOptions)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	for cur.Next(context.Background()) {
 		var user User
 		err := cur.Decode(&user)
 		if err != nil {

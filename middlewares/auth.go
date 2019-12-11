@@ -2,9 +2,8 @@ package middlewares
 
 import (
 	"auth-service-template/models"
-	"context"
 	"encoding/json"
-	"fmt"
+	"github.com/gorilla/context"
 	"net/http"
 	"os"
 	"strings"
@@ -70,7 +69,9 @@ var JwtAuthentication = func(next http.Handler) http.Handler {
 			return
 		}
 
-		if strings.Contains(requestPath, "/admin/") && !checkAdminRoute(requestPath, tk.UserId) {
+		user := models.GetUser(tk.Username)
+
+		if strings.Contains(requestPath, "/admin/") && !checkAdminRoute(requestPath, *user) {
 			response = map[string]interface{}{"status": true, "message": "You are not Admin."}
 			w.WriteHeader(http.StatusForbidden)
 			w.Header().Add("Content-Type", "application/json")
@@ -78,16 +79,27 @@ var JwtAuthentication = func(next http.Handler) http.Handler {
 		}
 
 		//Everything went well, proceed with the request and set the caller to the user retrieved from the parsed token
-		fmt.Sprintf("User %v", tk.UserId) //Useful for monitoring
-		ctx := context.WithValue(r.Context(), "user", tk.UserId)
-		r = r.WithContext(ctx)
+		setUserDataInContext(user, r)
+
 		next.ServeHTTP(w, r) //proceed in the middleware chain!
 	})
 }
 
-func checkAdminRoute(requestPath string, userId string) bool {
-	user := models.GetUser(userId)
+func checkAdminRoute(requestPath string, user models.User) bool {
 	return isAdminRole(user.Role)
+}
+
+func setUserDataInContext(user *models.User, r *http.Request){
+	permissions := make(map[string]string)
+	for _, organization := range user.OrganizationPermission{
+		permissions[organization.OrganizationId] = organization.OrganziationRole
+	}
+	context.Set(r, "organization_permissions", permissions)
+	context.Set(r, "username", user.Username)
+	context.Set(r, "role", user.Role)
+	context.Set(r, "email", user.Email)
+	context.Set(r, "userId", user.ID)
+
 }
 
 func isAdminRole(role []string) bool {
