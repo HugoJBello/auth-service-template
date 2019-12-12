@@ -1,65 +1,311 @@
-2019/06/24 17:29:55 Starting server on port 8000
-2019/06/24 17:30:04 Mon Jun 24 17:30:04 CEST 2019 --> POST /api/user/login 
-2019/06/24 18:07:55 Starting server on port 8000
-2019/06/24 18:08:03 Mon Jun 24 18:08:03 CEST 2019 --> POST /api/user/login 
-2019/06/26 09:26:28 Starting server on port 8000
-2019/06/26 09:26:41 Wed Jun 26 09:26:41 CEST 2019 --> POST /api/user/register 
-2019/06/26 09:26:51 Wed Jun 26 09:26:51 CEST 2019 --> POST /api/user/register 
-2019/06/26 09:39:06 Wed Jun 26 09:39:06 CEST 2019 --> POST /api/user/register 
-2019/06/26 09:39:17 Wed Jun 26 09:39:17 CEST 2019 --> POST /api/user/login 
-2019/06/26 09:44:12 Starting server on port 8000
-2019/06/26 09:44:23 Wed Jun 26 09:44:23 CEST 2019 --> POST /api/user/register 
-2019/06/26 09:44:27 Wed Jun 26 09:44:27 CEST 2019 --> POST /api/user/login 
-2019/06/26 09:49:11 Starting server on port 8000
-2019/06/26 09:49:15 Wed Jun 26 09:49:15 CEST 2019 --> POST /api/user/login 
-2019/06/26 09:50:27 Wed Jun 26 09:50:27 CEST 2019 --> POST /api/user/login 
-2019/06/26 09:51:08 Wed Jun 26 09:51:08 CEST 2019 --> POST /api/user/login 
-2019/06/26 09:52:06 Wed Jun 26 09:52:06 CEST 2019 --> POST /api/user/login 
-2019/06/26 09:52:45 Wed Jun 26 09:52:45 CEST 2019 --> POST /api/user/login 
-2019/06/26 09:53:05 Wed Jun 26 09:53:05 CEST 2019 --> POST /api/user/login 
-2019/06/26 09:53:18 Wed Jun 26 09:53:18 CEST 2019 --> POST /api/user/login 
-2019/06/26 09:54:40 Starting server on port 8000
-2019/06/26 09:59:59 Starting server on port 8000
-2019/06/26 10:00:06 Wed Jun 26 10:00:06 CEST 2019 --> POST /api/user/login 
-2019/06/26 10:02:25 Starting server on port 8000
-2019/06/26 10:03:12 Wed Jun 26 10:03:12 CEST 2019 --> POST /api/user/login 
-2019/06/26 10:03:35 Wed Jun 26 10:03:35 CEST 2019 --> POST /api/user/login 
-2019/06/26 10:05:43 Wed Jun 26 10:05:43 CEST 2019 --> POST /api/user/register 
-2019/06/26 10:06:49 Wed Jun 26 10:06:49 CEST 2019 --> POST /api/user/login 
-2019/06/26 10:07:05 Wed Jun 26 10:07:05 CEST 2019 --> POST /api/user/register 
-2019/06/26 10:10:06 Starting server on port 8000
-2019/06/26 10:10:13 Wed Jun 26 10:10:13 CEST 2019 --> POST /api/user/login 
-2019/06/26 10:10:29 Wed Jun 26 10:10:29 CEST 2019 --> POST /api/user/register 
-2019/06/26 10:10:33 Wed Jun 26 10:10:33 CEST 2019 --> POST /api/user/login 
-2019/06/26 10:14:39 Starting server on port 8000
-2019/06/26 10:14:49 Wed Jun 26 10:14:49 CEST 2019 --> POST /api/user/register 
-2019/06/26 10:14:59 Wed Jun 26 10:14:59 CEST 2019 --> POST /api/user/login 
-2019/06/26 10:15:28 Wed Jun 26 10:15:28 CEST 2019 --> POST /api/user/login 
-2019/06/26 10:16:17 Wed Jun 26 10:16:17 CEST 2019 --> POST /api/user/login 
-2019/06/26 10:16:43 Wed Jun 26 10:16:43 CEST 2019 --> POST /api/user/register 
-2019/06/26 10:16:56 Wed Jun 26 10:16:56 CEST 2019 --> POST /api/user/login 
-2019/06/26 10:17:05 Wed Jun 26 10:17:05 CEST 2019 --> POST /api/user/login 
-2019/06/26 10:17:19 Wed Jun 26 10:17:19 CEST 2019 --> POST /api/user/login 
-2019/06/26 10:17:23 Wed Jun 26 10:17:23 CEST 2019 --> POST /api/user/login 
-2019/06/26 11:01:41 Starting server on port 8000
-2019/06/26 11:01:52 Wed Jun 26 11:01:52 CEST 2019 --> POST /api/user/login 
-2019/06/26 11:01:56 Wed Jun 26 11:01:56 CEST 2019 --> POST /api/user/login 
-2019/06/26 11:39:31 Starting server on port 8000
-2019/06/26 11:39:40 Wed Jun 26 11:39:40 CEST 2019 --> POST /api/user/login 
-2019/06/26 11:39:59 Wed Jun 26 11:39:59 CEST 2019 --> POST /api/user/register 
-2019/06/26 11:40:03 Wed Jun 26 11:40:03 CEST 2019 --> POST /api/user/login 
-2019/06/26 11:40:18 Wed Jun 26 11:40:18 CEST 2019 --> POST /api/user/login 
-2019/06/26 11:54:19 Wed Jun 26 11:54:19 CEST 2019 --> POST /api/user/login 
-2019/06/26 11:55:16 Wed Jun 26 11:55:16 CEST 2019 --> POST /api/user/login 
-2019/06/26 11:55:22 Wed Jun 26 11:55:22 CEST 2019 --> POST /api/user/login 
-2019/06/26 11:55:35 Wed Jun 26 11:55:35 CEST 2019 --> POST /api/user/login 
-2019/06/26 11:58:41 Wed Jun 26 11:58:41 CEST 2019 --> POST /api/user/login 
-2019/06/26 12:01:12 Wed Jun 26 12:01:12 CEST 2019 --> POST /api/user/login 
-2019/06/26 12:01:21 Wed Jun 26 12:01:21 CEST 2019 --> POST /api/user/login 
-2019/06/26 12:01:47 Wed Jun 26 12:01:47 CEST 2019 --> POST /api/user/login 
-2019/06/26 12:07:17 Wed Jun 26 12:07:17 CEST 2019 --> POST /api/user/login 
-2019/06/26 12:13:53 Wed Jun 26 12:13:53 CEST 2019 --> POST /api/user/login 
-2019/06/26 12:23:11 Wed Jun 26 12:23:11 CEST 2019 --> POST /api/user/login 
-2019/08/19 16:09:21 Starting server on port 8000
-2019/10/10 09:20:29 Starting server on port 8000
-2019/10/25 14:08:55 Starting server on port 8000
+2019/12/12 10:51:04 Starting server on port 8000
+2019/12/12 10:54:22 Thu Dec 12 10:54:22 CET 2019 --> POST /api/user/login 
+2019/12/12 10:56:12 Thu Dec 12 10:56:12 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 10:57:31 Starting server on port 8000
+2019/12/12 10:57:36 Thu Dec 12 10:57:36 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 10:58:03 Starting server on port 8000
+2019/12/12 10:58:09 Thu Dec 12 10:58:09 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 10:58:09 token is expired by 3m22s
+2019/12/12 11:01:12 Starting server on port 8000
+2019/12/12 11:01:16 Thu Dec 12 11:01:16 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:01:16 token is expired by 6m29s
+2019/12/12 11:01:20 Thu Dec 12 11:01:20 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:01:20 token is expired by 6m33s
+2019/12/12 11:01:20 Thu Dec 12 11:01:20 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:01:20 token is expired by 6m33s
+2019/12/12 11:01:21 Thu Dec 12 11:01:21 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:01:21 token is expired by 6m34s
+2019/12/12 11:01:23 Thu Dec 12 11:01:23 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:01:23 token is expired by 6m36s
+2019/12/12 11:01:32 Thu Dec 12 11:01:32 CET 2019 --> POST /api/user/login 
+2019/12/12 11:03:15 Starting server on port 8000
+2019/12/12 11:03:21 Thu Dec 12 11:03:21 CET 2019 --> POST /api/user/login 
+2019/12/12 11:03:43 Thu Dec 12 11:03:43 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:08:10 Starting server on port 8000
+2019/12/12 11:08:22 Thu Dec 12 11:08:22 CET 2019 --> POST /api/user/login 
+2019/12/12 11:08:55 Thu Dec 12 11:08:55 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:10:38 Thu Dec 12 11:10:38 CET 2019 --> POST /api/user/refresh 
+2019/12/12 11:12:15 Starting server on port 8000
+2019/12/12 11:12:20 Thu Dec 12 11:12:20 CET 2019 --> POST /api/user/refresh 
+2019/12/12 11:13:50 Starting server on port 8000
+2019/12/12 11:13:56 Thu Dec 12 11:13:56 CET 2019 --> POST /api/user/refresh 
+2019/12/12 11:13:56 http: panic serving [::1]:52213: runtime error: invalid memory address or nil pointer dereference
+goroutine 34 [running]:
+net/http.(*conn).serve.func1(0xc00029e000)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:1767 +0x139
+panic(0x15dc3a0, 0x1b97e70)
+	/usr/local/Cellar/go/1.13.1/libexec/src/runtime/panic.go:679 +0x1b2
+auth-service-template/controllers.Refresh(0x17e3700, 0xc0002b0000, 0xc0002b6100)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/controllers/authControllers.go:116 +0x1328
+net/http.HandlerFunc.ServeHTTP(0x1699a68, 0x17e3700, 0xc0002b0000, 0xc0002b6100)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+auth-service-template/middlewares.glob..func1.1(0x17e3700, 0xc0002b0000, 0xc0002b6100)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/middlewares/auth.go:91 +0x1039
+net/http.HandlerFunc.ServeHTTP(0xc0000b2020, 0x17e3700, 0xc0002b0000, 0xc0002b6100)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+auth-service-template/middlewares.glob..func2.1(0x17e3700, 0xc0002b0000, 0xc0002b6100)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/middlewares/middlewareLogger.go:14 +0x1a1
+net/http.HandlerFunc.ServeHTTP(0xc0000b2040, 0x17e3700, 0xc0002b0000, 0xc0002b6100)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc00025a000, 0x17e3700, 0xc0002b0000, 0xc00023c200)
+	/Users/hugojosebello/go/pkg/mod/github.com/gorilla/mux@v1.7.3/mux.go:212 +0xe2
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000212360, 0x17e3700, 0xc0002b0000, 0xc00023c200)
+	/Users/hugojosebello/go/pkg/mod/github.com/gorilla/handlers@v1.4.2/cors.go:54 +0x1037
+net/http.serverHandler.ServeHTTP(0xc000292000, 0x17e3700, 0xc0002b0000, 0xc00023c200)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2802 +0xa4
+net/http.(*conn).serve(0xc00029e000, 0x17e4a80, 0xc000232d80)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:1890 +0x875
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2927 +0x38e
+2019/12/12 11:14:57 Starting server on port 8000
+2019/12/12 11:15:03 Thu Dec 12 11:15:03 CET 2019 --> POST /api/user/refresh 
+2019/12/12 11:15:06 Thu Dec 12 11:15:06 CET 2019 --> POST /api/user/refresh 
+2019/12/12 11:15:36 Starting server on port 8000
+2019/12/12 11:15:40 Thu Dec 12 11:15:40 CET 2019 --> POST /api/user/refresh 
+2019/12/12 11:15:42 Thu Dec 12 11:15:42 CET 2019 --> POST /api/user/refresh 
+2019/12/12 11:15:43 Thu Dec 12 11:15:43 CET 2019 --> POST /api/user/refresh 
+2019/12/12 11:16:33 Starting server on port 8000
+2019/12/12 11:16:38 Thu Dec 12 11:16:38 CET 2019 --> POST /api/user/refresh 
+2019/12/12 11:18:21 Starting server on port 8000
+2019/12/12 11:18:24 Thu Dec 12 11:18:24 CET 2019 --> POST /api/user/refresh 
+2019/12/12 11:21:55 Starting server on port 8000
+2019/12/12 11:22:02 Thu Dec 12 11:22:02 CET 2019 --> POST /api/user/refresh 
+2019/12/12 11:22:02 refreshing token
+2019/12/12 11:22:02 creating token
+2019/12/12 11:25:19 Starting server on port 8000
+2019/12/12 11:25:22 Thu Dec 12 11:25:22 CET 2019 --> POST /api/user/refresh 
+2019/12/12 11:25:22 refreshing token
+2019/12/12 11:25:22 creating token
+2019/12/12 11:29:06 Starting server on port 8000
+2019/12/12 11:29:12 Thu Dec 12 11:29:12 CET 2019 --> POST /api/user/refresh 
+2019/12/12 11:29:12 refreshing token
+2019/12/12 11:29:12 creating token
+2019/12/12 11:29:34 Thu Dec 12 11:29:34 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:29:49 Thu Dec 12 11:29:49 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:29:49 signature is invalid
+2019/12/12 11:29:59 Thu Dec 12 11:29:59 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:30:29 Thu Dec 12 11:30:29 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:31:10 Thu Dec 12 11:31:10 CET 2019 --> POST /api/user/login 
+2019/12/12 11:31:26 Starting server on port 8000
+2019/12/12 11:31:39 Thu Dec 12 11:31:39 CET 2019 --> POST /api/user/login 
+2019/12/12 11:32:10 Thu Dec 12 11:32:10 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:32:10 http: panic serving [::1]:56793: runtime error: invalid memory address or nil pointer dereference
+goroutine 50 [running]:
+net/http.(*conn).serve.func1(0xc0002a0000)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:1767 +0x139
+panic(0x15dc5a0, 0x1b97e70)
+	/usr/local/Cellar/go/1.13.1/libexec/src/runtime/panic.go:679 +0x1b2
+auth-service-template/middlewares.setUserDataInContext(0x0, 0xc0002fc200)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/middlewares/auth.go:101 +0x34
+auth-service-template/middlewares.glob..func1.1(0x17e3ac0, 0xc0002fe000, 0xc0002fc200)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/middlewares/auth.go:89 +0xffb
+net/http.HandlerFunc.ServeHTTP(0xc00000eb00, 0x17e3ac0, 0xc0002fe000, 0xc0002fc200)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+auth-service-template/middlewares.glob..func2.1(0x17e3ac0, 0xc0002fe000, 0xc0002fc200)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/middlewares/middlewareLogger.go:14 +0x1a1
+net/http.HandlerFunc.ServeHTTP(0xc00000eb20, 0x17e3ac0, 0xc0002fe000, 0xc0002fc200)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000252000, 0x17e3ac0, 0xc0002fe000, 0xc0002fc000)
+	/Users/hugojosebello/go/pkg/mod/github.com/gorilla/mux@v1.7.3/mux.go:212 +0xe2
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc00011c1b0, 0x17e3ac0, 0xc0002fe000, 0xc0002fc000)
+	/Users/hugojosebello/go/pkg/mod/github.com/gorilla/handlers@v1.4.2/cors.go:54 +0x1037
+net/http.serverHandler.ServeHTTP(0xc00028c000, 0x17e3ac0, 0xc0002fe000, 0xc0002fc000)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2802 +0xa4
+net/http.(*conn).serve(0xc0002a0000, 0x17e4e40, 0xc0000ffb80)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:1890 +0x875
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2927 +0x38e
+2019/12/12 11:38:25 Starting server on port 8000
+2019/12/12 11:38:32 Thu Dec 12 11:38:32 CET 2019 --> POST /api/user/login 
+2019/12/12 11:38:42 Thu Dec 12 11:38:42 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:38:42 http: panic serving [::1]:58570: interface conversion: interface {} is nil, not []string
+goroutine 51 [running]:
+net/http.(*conn).serve.func1(0xc0002540a0)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:1767 +0x139
+panic(0x15e0c40, 0xc00009cf30)
+	/usr/local/Cellar/go/1.13.1/libexec/src/runtime/panic.go:679 +0x1b2
+auth-service-template/controllers.glob..func1(0x17e3900, 0xc0002660e0, 0xc000262500)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/controllers/UsersControllers.go:15 +0x6a5
+net/http.HandlerFunc.ServeHTTP(0x1699c10, 0x17e3900, 0xc0002660e0, 0xc000262500)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+auth-service-template/middlewares.glob..func1.1(0x17e3900, 0xc0002660e0, 0xc000262500)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/middlewares/auth.go:92 +0x10ac
+net/http.HandlerFunc.ServeHTTP(0xc00000ea60, 0x17e3900, 0xc0002660e0, 0xc000262500)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+auth-service-template/middlewares.glob..func2.1(0x17e3900, 0xc0002660e0, 0xc000262500)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/middlewares/middlewareLogger.go:14 +0x1a1
+net/http.HandlerFunc.ServeHTTP(0xc00000ea80, 0x17e3900, 0xc0002660e0, 0xc000262500)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000218000, 0x17e3900, 0xc0002660e0, 0xc000262300)
+	/Users/hugojosebello/go/pkg/mod/github.com/gorilla/mux@v1.7.3/mux.go:212 +0xe2
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000d6510, 0x17e3900, 0xc0002660e0, 0xc000262300)
+	/Users/hugojosebello/go/pkg/mod/github.com/gorilla/handlers@v1.4.2/cors.go:54 +0x1037
+net/http.serverHandler.ServeHTTP(0xc000240000, 0x17e3900, 0xc0002660e0, 0xc000262300)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2802 +0xa4
+net/http.(*conn).serve(0xc0002540a0, 0x17e4c80, 0xc000090240)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:1890 +0x875
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2927 +0x38e
+2019/12/12 11:40:24 Starting server on port 8000
+2019/12/12 11:40:32 Thu Dec 12 11:40:32 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:40:32 http: panic serving [::1]:59077: interface conversion: interface {} is nil, not []string
+goroutine 51 [running]:
+net/http.(*conn).serve.func1(0xc0002834a0)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:1767 +0x139
+panic(0x15e0fe0, 0xc0001d5230)
+	/usr/local/Cellar/go/1.13.1/libexec/src/runtime/panic.go:679 +0x1b2
+auth-service-template/controllers.glob..func1(0x17e3d80, 0xc0002d6000, 0xc0001b2400)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/controllers/UsersControllers.go:15 +0x6a5
+net/http.HandlerFunc.ServeHTTP(0x1699fb0, 0x17e3d80, 0xc0002d6000, 0xc0001b2400)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+auth-service-template/middlewares.glob..func1.1(0x17e3d80, 0xc0002d6000, 0xc0001b2400)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/middlewares/auth.go:97 +0x10c1
+net/http.HandlerFunc.ServeHTTP(0xc000105740, 0x17e3d80, 0xc0002d6000, 0xc0001b2400)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+auth-service-template/middlewares.glob..func2.1(0x17e3d80, 0xc0002d6000, 0xc0001b2400)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/middlewares/middlewareLogger.go:14 +0x1a1
+net/http.HandlerFunc.ServeHTTP(0xc000105760, 0x17e3d80, 0xc0002d6000, 0xc0001b2400)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000270000, 0x17e3d80, 0xc0002d6000, 0xc0001b2200)
+	/Users/hugojosebello/go/pkg/mod/github.com/gorilla/mux@v1.7.3/mux.go:212 +0xe2
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc00028e2d0, 0x17e3d80, 0xc0002d6000, 0xc0001b2200)
+	/Users/hugojosebello/go/pkg/mod/github.com/gorilla/handlers@v1.4.2/cors.go:54 +0x1037
+net/http.serverHandler.ServeHTTP(0xc0002b4000, 0x17e3d80, 0xc0002d6000, 0xc0001b2200)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2802 +0xa4
+net/http.(*conn).serve(0xc0002834a0, 0x17e5100, 0xc00010b1c0)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:1890 +0x875
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2927 +0x38e
+2019/12/12 11:41:57 Starting server on port 8000
+2019/12/12 11:42:03 Thu Dec 12 11:42:03 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:42:03 http: panic serving [::1]:59466: interface conversion: interface {} is nil, not []string
+goroutine 56 [running]:
+net/http.(*conn).serve.func1(0xc0002840a0)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:1767 +0x139
+panic(0x15e10c0, 0xc000261500)
+	/usr/local/Cellar/go/1.13.1/libexec/src/runtime/panic.go:679 +0x1b2
+auth-service-template/controllers.glob..func1(0x17e3ec0, 0xc00027e0e0, 0xc0001a2400)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/controllers/UsersControllers.go:15 +0x6a5
+net/http.HandlerFunc.ServeHTTP(0x169a090, 0x17e3ec0, 0xc00027e0e0, 0xc0001a2400)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+auth-service-template/middlewares.glob..func1.1(0x17e3ec0, 0xc00027e0e0, 0xc0001a2400)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/middlewares/auth.go:98 +0x10c1
+net/http.HandlerFunc.ServeHTTP(0xc000262800, 0x17e3ec0, 0xc00027e0e0, 0xc0001a2400)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+auth-service-template/middlewares.glob..func2.1(0x17e3ec0, 0xc00027e0e0, 0xc0001a2400)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/middlewares/middlewareLogger.go:14 +0x1a1
+net/http.HandlerFunc.ServeHTTP(0xc000262820, 0x17e3ec0, 0xc00027e0e0, 0xc0001a2400)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000256000, 0x17e3ec0, 0xc00027e0e0, 0xc0001a2200)
+	/Users/hugojosebello/go/pkg/mod/github.com/gorilla/mux@v1.7.3/mux.go:212 +0xe2
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0001da3f0, 0x17e3ec0, 0xc00027e0e0, 0xc0001a2200)
+	/Users/hugojosebello/go/pkg/mod/github.com/gorilla/handlers@v1.4.2/cors.go:54 +0x1037
+net/http.serverHandler.ServeHTTP(0xc00027e000, 0x17e3ec0, 0xc00027e0e0, 0xc0001a2200)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2802 +0xa4
+net/http.(*conn).serve(0xc0002840a0, 0x17e5240, 0xc00019da00)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:1890 +0x875
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2927 +0x38e
+2019/12/12 11:43:46 Starting server on port 8000
+2019/12/12 11:43:50 Thu Dec 12 11:43:50 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:43:50 http: panic serving [::1]:59915: interface conversion: interface {} is nil, not []string
+goroutine 5 [running]:
+net/http.(*conn).serve.func1(0xc000284000)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:1767 +0x139
+panic(0x15e1120, 0xc000268840)
+	/usr/local/Cellar/go/1.13.1/libexec/src/runtime/panic.go:679 +0x1b2
+auth-service-template/controllers.glob..func1(0x17e3f00, 0xc000298000, 0xc00028c200)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/controllers/UsersControllers.go:15 +0x6a5
+net/http.HandlerFunc.ServeHTTP(0x169a0f0, 0x17e3f00, 0xc000298000, 0xc00028c200)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+auth-service-template/middlewares.glob..func1.1(0x17e3f00, 0xc000298000, 0xc00028c200)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/middlewares/auth.go:98 +0x10c1
+net/http.HandlerFunc.ServeHTTP(0xc000266120, 0x17e3f00, 0xc000298000, 0xc00028c200)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+auth-service-template/middlewares.glob..func2.1(0x17e3f00, 0xc000298000, 0xc00028c200)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/middlewares/middlewareLogger.go:14 +0x1a1
+net/http.HandlerFunc.ServeHTTP(0xc000266140, 0x17e3f00, 0xc000298000, 0xc00028c200)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000238000, 0x17e3f00, 0xc000298000, 0xc00028c000)
+	/Users/hugojosebello/go/pkg/mod/github.com/gorilla/mux@v1.7.3/mux.go:212 +0xe2
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000ec5a0, 0x17e3f00, 0xc000298000, 0xc00028c000)
+	/Users/hugojosebello/go/pkg/mod/github.com/gorilla/handlers@v1.4.2/cors.go:54 +0x1037
+net/http.serverHandler.ServeHTTP(0xc000260000, 0x17e3f00, 0xc000298000, 0xc00028c000)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2802 +0xa4
+net/http.(*conn).serve(0xc000284000, 0x17e52c0, 0xc000286000)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:1890 +0x875
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2927 +0x38e
+2019/12/12 11:46:07 Starting server on port 8000
+2019/12/12 11:46:11 Thu Dec 12 11:46:11 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:46:11 invalid token
+2019/12/12 11:46:11 http: panic serving [::1]:60513: interface conversion: interface {} is nil, not []string
+goroutine 6 [running]:
+net/http.(*conn).serve.func1(0xc0002be000)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:1767 +0x139
+panic(0x15e1260, 0xc0002ce150)
+	/usr/local/Cellar/go/1.13.1/libexec/src/runtime/panic.go:679 +0x1b2
+auth-service-template/controllers.glob..func1(0x17e40a0, 0xc0002940e0, 0xc000226200)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/controllers/UsersControllers.go:15 +0x6a5
+net/http.HandlerFunc.ServeHTTP(0x169a240, 0x17e40a0, 0xc0002940e0, 0xc000226200)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+auth-service-template/middlewares.glob..func1.1(0x17e40a0, 0xc0002940e0, 0xc000226200)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/middlewares/auth.go:100 +0x14df
+net/http.HandlerFunc.ServeHTTP(0xc00021d8a0, 0x17e40a0, 0xc0002940e0, 0xc000226200)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+auth-service-template/middlewares.glob..func2.1(0x17e40a0, 0xc0002940e0, 0xc000226200)
+	/Users/hugojosebello/Documents/git-repos/auth-service-template/middlewares/middlewareLogger.go:14 +0x1a1
+net/http.HandlerFunc.ServeHTTP(0xc00021d8c0, 0x17e40a0, 0xc0002940e0, 0xc000226200)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2007 +0x44
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000252000, 0x17e40a0, 0xc0002940e0, 0xc000196100)
+	/Users/hugojosebello/go/pkg/mod/github.com/gorilla/mux@v1.7.3/mux.go:212 +0xe2
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc00026e2d0, 0x17e40a0, 0xc0002940e0, 0xc000196100)
+	/Users/hugojosebello/go/pkg/mod/github.com/gorilla/handlers@v1.4.2/cors.go:54 +0x1037
+net/http.serverHandler.ServeHTTP(0xc000294000, 0x17e40a0, 0xc0002940e0, 0xc000196100)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2802 +0xa4
+net/http.(*conn).serve(0xc0002be000, 0x17e5460, 0xc00019ec00)
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:1890 +0x875
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.13.1/libexec/src/net/http/server.go:2927 +0x38e
+2019/12/12 11:46:54 Starting server on port 8000
+2019/12/12 11:46:59 Thu Dec 12 11:46:59 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:46:59 invalid token
+2019/12/12 11:48:32 Starting server on port 8000
+2019/12/12 11:48:38 Thu Dec 12 11:48:38 CET 2019 --> POST /api/user/login 
+2019/12/12 11:48:54 Thu Dec 12 11:48:54 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 11:48:54 invalid token
+2019/12/12 12:05:00 Starting server on port 8000
+2019/12/12 12:05:10 Thu Dec 12 12:05:10 CET 2019 --> POST /api/user/login 
+2019/12/12 12:05:13 Thu Dec 12 12:05:13 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 12:05:13 invalid token
+2019/12/12 12:05:17 Thu Dec 12 12:05:17 CET 2019 --> POST /api/user/refresh 
+2019/12/12 12:05:17 invalid token
+2019/12/12 12:05:45 Thu Dec 12 12:05:45 CET 2019 --> POST /api/user/refresh 
+2019/12/12 12:05:45 invalid token
+2019/12/12 12:07:47 Thu Dec 12 12:07:47 CET 2019 --> POST /api/user/refresh 
+2019/12/12 12:07:47 invalid token
+2019/12/12 12:08:14 Thu Dec 12 12:08:14 CET 2019 --> POST /api/user/login 
+2019/12/12 12:08:26 Thu Dec 12 12:08:26 CET 2019 --> POST /api/user/refresh 
+2019/12/12 12:08:26 invalid token
+2019/12/12 12:08:44 Thu Dec 12 12:08:44 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 12:08:44 invalid token
+2019/12/12 12:09:10 Thu Dec 12 12:09:10 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 12:09:10 invalid token
+2019/12/12 12:10:51 Starting server on port 8000
+2019/12/12 12:10:55 Thu Dec 12 12:10:55 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 12:10:55 invalid token, token lacks the required fields
+2019/12/12 12:11:58 Starting server on port 8000
+2019/12/12 12:12:02 Thu Dec 12 12:12:02 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 12:12:02 invalid token, token lacks the required fields
+2019/12/12 12:13:46 Starting server on port 8000
+2019/12/12 12:13:51 Thu Dec 12 12:13:51 CET 2019 --> POST /api/user/login 
+2019/12/12 12:14:09 Thu Dec 12 12:14:09 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 12:14:16 Thu Dec 12 12:14:16 CET 2019 --> POST /api/user/refresh 
+2019/12/12 12:14:16 refreshing token
+2019/12/12 12:14:16 creating token
+2019/12/12 12:14:36 Thu Dec 12 12:14:36 CET 2019 --> GET /api/user/list skip=0&limit=10
+2019/12/12 12:14:36 invalid token, token lacks the required fields
+2019/12/12 12:14:46 Thu Dec 12 12:14:46 CET 2019 --> POST /api/user/refresh 
+2019/12/12 12:14:46 refreshing token
+2019/12/12 12:14:46 creating token
+2019/12/12 12:25:09 Starting server on port 8000

@@ -3,22 +3,22 @@ package middlewares
 import (
 	"auth-service-template/models"
 	"encoding/json"
+	"errors"
+	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/gorilla/context"
+	"log"
 	"net/http"
 	"os"
 	"strings"
-
-	jwt "github.com/dgrijalva/jwt-go"
 )
 
 var JwtAuthentication = func(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		notAuth := []string{"/api/user/register", "/api/user/login"} //List of endpoints that doesn't require auth
+		notAuth := []string{"/api/user/register","/api/user/refresh", "/api/user/login"} //List of endpoints that doesn't require auth
 		requestPath := r.URL.Path                                    //current request path
 
 		//check if request does not need authentication, serve the request if it doesn't need it
 		for _, value := range notAuth {
-
 			if value == requestPath {
 				next.ServeHTTP(w, r)
 				return
@@ -29,7 +29,7 @@ var JwtAuthentication = func(next http.Handler) http.Handler {
 		tokenHeader := r.Header.Get("Authorization") //Grab the token from the header
 
 		if tokenHeader == "" { //Token is missing, returns with error code 403 Unauthorized
-
+			log.Println("missing token")
 			response = map[string]interface{}{"status": false, "message": "missing auth token"}
 			w.WriteHeader(http.StatusForbidden)
 			w.Header().Add("Content-Type", "application/json")
@@ -39,7 +39,8 @@ var JwtAuthentication = func(next http.Handler) http.Handler {
 
 		splitted := strings.Split(tokenHeader, " ") //The token normally comes in format `Bearer {token-body}`, we check if the retrieved token matched this requirement
 		if len(splitted) != 2 {
-			response = map[string]interface{}{"status": false, "message": "Invalid/Malformed auth token"}
+			log.Println("invalid token")
+			response = map[string]interface{}{"status": false, "message": "Invalid/Malformed auth token. Tokens must be Bearer"}
 			w.WriteHeader(http.StatusForbidden)
 			w.Header().Add("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(response)
@@ -53,8 +54,16 @@ var JwtAuthentication = func(next http.Handler) http.Handler {
 			return []byte(os.Getenv("token_password")), nil
 		})
 
-		if err != nil { //Malformed token, returns with http code 403 as usual
-			response = map[string]interface{}{"status": false, "message": "Invalid/Malformed auth token"}
+		if err != nil {
+			log.Println(err)
+			if err == jwt.ErrSignatureInvalid {
+				w.WriteHeader(http.StatusUnauthorized)
+				response = map[string]interface{}{"status": false, "message": "Invalid/Old auth token "+ err.Error()}
+				w.Header().Add("Content-Type", "application/json")
+				json.NewEncoder(w).Encode(response)
+			}
+			response = map[string]interface{}{"status": false, "message": "Invalid/Malformed auth token. "+ err.Error()}
+			log.Println(err)
 			w.WriteHeader(http.StatusForbidden)
 			w.Header().Add("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(response)
@@ -69,9 +78,18 @@ var JwtAuthentication = func(next http.Handler) http.Handler {
 			return
 		}
 
-		user := models.GetUser(tk.Username)
+		//user := models.GetUser(tk.Username)
+		err = setUserDataInContext(*tk, r)
+		if err != nil {
+			log.Println(err)
+			w.WriteHeader(http.StatusUnauthorized)
+			response = map[string]interface{}{"status": false, "message": "Invalid/Old auth token "+ err.Error()}
+			w.Header().Add("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(response)
+			return
+		}
 
-		if strings.Contains(requestPath, "/admin/") && !checkAdminRoute(requestPath, *user) {
+		if strings.Contains(requestPath, "/admin/") && !checkAdminRoute(requestPath, tk.Role) {
 			response = map[string]interface{}{"status": true, "message": "You are not Admin."}
 			w.WriteHeader(http.StatusForbidden)
 			w.Header().Add("Content-Type", "application/json")
@@ -79,27 +97,29 @@ var JwtAuthentication = func(next http.Handler) http.Handler {
 		}
 
 		//Everything went well, proceed with the request and set the caller to the user retrieved from the parsed token
-		setUserDataInContext(user, r)
-
 		next.ServeHTTP(w, r) //proceed in the middleware chain!
 	})
 }
 
-func checkAdminRoute(requestPath string, user models.User) bool {
-	return isAdminRole(user.Role)
+func checkAdminRoute(requestPath string, roles []string) bool {
+	return isAdminRole(roles)
 }
 
-func setUserDataInContext(user *models.User, r *http.Request){
+func setUserDataInContext(token models.Token, r *http.Request) error{
+	if (token.Role == nil || token.OrganizationPermission == nil || token.Username == "" || token.UserId == ""){
+		return errors.New("invalid token, token lacks the required fields")
+	}
+
 	permissions := make(map[string]string)
-	for _, organization := range user.OrganizationPermission{
+	for _, organization := range token.OrganizationPermission{
 		permissions[organization.OrganizationId] = organization.OrganziationRole
 	}
-	context.Set(r, "organization_permissions", permissions)
-	context.Set(r, "username", user.Username)
-	context.Set(r, "role", user.Role)
-	context.Set(r, "email", user.Email)
-	context.Set(r, "userId", user.ID)
 
+	context.Set(r, "organization_permissions", permissions)
+	context.Set(r, "username", token.Username)
+	context.Set(r, "role", token.Role)
+	context.Set(r, "userId", token.UserId)
+	return nil
 }
 
 func isAdminRole(role []string) bool {

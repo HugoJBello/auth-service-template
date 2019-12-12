@@ -27,6 +27,8 @@ func main() {
 
 	router.HandleFunc("/api/user/register", controllers.CreateUser).Methods("POST")
 	router.HandleFunc("/api/user/login", controllers.Authenticate).Methods("POST")
+	router.HandleFunc("/api/user/refresh", controllers.Refresh).Methods("POST")
+
 	router.HandleFunc("/api/user/list", controllers.ListUsers).Queries("limit", "{limit}", "skip", "{skip}").Methods("GET")
 	router.HandleFunc("/api/user/list_in_organization", controllers.ListUsers).Queries("limit", "{limit}", "skip", "{skip}","organization_id", "{organization_id}").Methods("GET")
 	router.HandleFunc("/api/user/update_organization_permissions", controllers.UpdateOrganizationInUser).Methods("PUT")

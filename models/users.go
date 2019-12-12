@@ -4,29 +4,19 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"log"
-	"os"
-
-	"github.com/dgrijalva/jwt-go"
 	options "go.mongodb.org/mongo-driver/mongo/options"
 	"golang.org/x/crypto/bcrypt"
 	"gopkg.in/mgo.v2/bson"
+	"log"
+	"os"
 )
-
-/*
-JWT claims struct
-*/
-type Token struct {
-	UserId   string
-	Username string
-	jwt.StandardClaims
-}
 
 //a struct to rep user user
 type User struct {
 	Username               string                   `bson:"username" json:"username,omitempty"`
 	Password               string                   `bson:"password,omitempty" json:"password,omitempty"`
 	Token                  string                   `bson:"token" json:"token,omitempty"`
+	RefreshToken           string                   `bson:"refresh_token" json:"refresh_token,omitempty"`
 	ID                     string                   `bson:"id,omitempty" json:"id,omitempty"`
 	Email                  string                   `bson:"email,omitempty" json:"email,omitempty"`
 	Role                   []string                 `bson:"role,omitempty" json:"role,omitempty"`
@@ -40,10 +30,19 @@ type OrganizationPermission struct {
 
 //a struct to rep user user
 type UserResponse struct {
-	Code    int
-	Message string
-	Data    []User
+	Code    int `bson:"code,omitempty" json:"code,omitempty"`
+	Message string `bson:"message,omitempty" json:"message,omitempty"`
+	Data    []User `bson:"data,omitempty" json:"data,omitempty"`
+	Token  Token `bson:"token,omitempty" json:"token,omitempty"`
 }
+
+type RefreshResponse struct {
+	Code    int `bson:"code,omitempty" json:"code,omitempty"`
+	Message string `bson:"message,omitempty" json:"message,omitempty"`
+	Token  string `bson:"token,omitempty" json:"token,omitempty"`
+	RefreshToken  string `bson:"refresh_token,omitempty" json:"refresh_token,omitempty"`
+}
+
 
 var collectionNameUsers = "users"
 
@@ -146,16 +145,6 @@ func (user *User) Create() error {
 		return err
 	}
 
-	//Create new JWT token for the newly registered user
-	fmt.Println(user.ID)
-
-	tk := &Token{UserId: user.ID}
-	token := jwt.NewWithClaims(jwt.GetSigningMethod("HS256"), tk)
-	tokenString, _ := token.SignedString([]byte(os.Getenv("token_password")))
-	user.Token = tokenString
-
-	user.Password = "" //delete password
-
 	return nil
 }
 
@@ -166,27 +155,28 @@ func Login(username, password string) (error, User) {
 	foundUser := &User{}
 	err := collection.FindOne(context.Background(), bson.M{"username": username}).Decode(foundUser)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return errors.New("Invalid login credentials. Please try again"), User{}
 	}
 	err = bcrypt.CompareHashAndPassword([]byte(foundUser.Password), []byte(password))
 	if err != nil && err == bcrypt.ErrMismatchedHashAndPassword { //Password does not match!
 		return errors.New("Invalid login credentials. Please try again"), User{}
 	}
-	//Worked! Logged In
-	user.Password = ""
-	user.Username = foundUser.Username
-	//Create JWT token
-	tk := &Token{UserId: foundUser.ID, Username: foundUser.Username}
-	token := jwt.NewWithClaims(jwt.GetSigningMethod("HS256"), tk)
-	tokenString, _ := token.SignedString([]byte(os.Getenv("token_password")))
-	user.Token = tokenString //Store the token in the response
 
+	//Worked! Logged In
+	user = *foundUser
+	user.Password = ""
+	//Create JWT token
+	token, refreshToken := CreateTokens(user)
+	tokenString, _ := token.SignedString([]byte(os.Getenv("token_password")))
+	refreshTokenString, _ := refreshToken.SignedString([]byte(os.Getenv("token_password")))
+
+	user.Token = tokenString
+	user.RefreshToken = refreshTokenString
 	return nil, user
 }
 
 func GetUser(username string) *User {
-
 	db := GetDB()
 	collection := db.Collection(collectionNameUsers)
 	foundUser := &User{}
@@ -218,7 +208,7 @@ func GetUsers(limit int, skip int) []User {
 	findOptions := options.FindOptions{Limit: &limitOption, Skip: &skipOption}
 	cur, err := collection.Find(context.Background(), bson.M{}, &findOptions)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return nil
 	}
 	for cur.Next(context.Background()) {
@@ -246,7 +236,7 @@ func GetUsersInOrg(limit int, skip int, organizationId string) []User {
 	findOptions := options.FindOptions{Limit: &limitOption, Skip: &skipOption}
 	cur, err := collection.Find(context.Background(), filter, &findOptions)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return nil
 	}
 	for cur.Next(context.Background()) {

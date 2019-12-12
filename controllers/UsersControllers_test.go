@@ -16,7 +16,6 @@ import (
 )
 
 
-
 func TestListUsers(t *testing.T) {
 	router := mux.NewRouter()
 	server := httptest.NewServer(router)
@@ -30,7 +29,7 @@ func TestListUsers(t *testing.T) {
 	user.CreateOrUpdateWithPlainPw()
 	user.Password = usersTesting[0].Password
 
-	_, token := ObtainTokenForTesting(user)
+	_, token, _ := ObtainTokenForTesting(user)
 	request, _ := http.NewRequest("GET", "/api/user/list?limit=10&skip=0", nil)
 	request.Header.Set("Authorization", token)
 	response := httptest.NewRecorder()
@@ -43,12 +42,17 @@ func TestListUsers(t *testing.T) {
 	userNoAdmin.CreateOrUpdateWithPlainPw()
 	userNoAdmin.Password = usersTesting[1].Password
 
-	_, token = ObtainTokenForTesting(userNoAdmin)
+	_, token, refreshToken := ObtainTokenForTesting(userNoAdmin)
 	request, _ = http.NewRequest("GET", "/api/user/list?limit=10&skip=0", nil)
 	request.Header.Set("Authorization", token)
 	response = httptest.NewRecorder()
 	router.ServeHTTP(response, request)
 	assert.Equal(t, 403, response.Code, "Error expected")
+
+	request.Header.Set("Authorization", refreshToken)
+	response = httptest.NewRecorder()
+	router.ServeHTTP(response, request)
+	assert.Equal(t, 401, response.Code, "Error expected")
 
 }
 
@@ -67,7 +71,7 @@ func TestListUsersInOrg(t *testing.T) {
 	user.OrganizationPermission[0].OrganziationRole="ADMIN"
 
 
-	_, token := ObtainTokenForTesting(user)
+	_, token, _:= ObtainTokenForTesting(user)
 	request, _ := http.NewRequest("GET", "/api/user/list_in_organization?limit=10&skip=0&organization_id="+ user.OrganizationPermission[0].OrganizationId, nil)
 	request.Header.Set("Authorization", token)
 	response := httptest.NewRecorder()
@@ -89,7 +93,7 @@ func TestListUsersInOrg(t *testing.T) {
 	userNoAdmin.Password = usersTesting[1].Password
 	userNoAdmin.OrganizationPermission[0].OrganziationRole="NONE"
 
-	_, token = ObtainTokenForTesting(userNoAdmin)
+	_, token, _ = ObtainTokenForTesting(userNoAdmin)
 	request, _ = http.NewRequest("GET", "/api/user/list_in_organization?limit=10&skip=0&organization_id="+ userNoAdmin.OrganizationPermission[0].OrganizationId, nil)
 	request.Header.Set("Authorization", token)
 	response = httptest.NewRecorder()
@@ -102,7 +106,7 @@ func TestListUsersInOrg(t *testing.T) {
 func TestUpdateOrganizationForUser(t *testing.T) {
 	user := usersTesting[0]
 	user.OrganizationPermission[0].OrganziationRole= "TEST"
-	_, token := ObtainTokenForTesting(user)
+	_, token, _ := ObtainTokenForTesting(user)
 
 	router := mux.NewRouter()
 	server := httptest.NewServer(router)
@@ -132,7 +136,7 @@ func TestUpdateOrganizationForUser(t *testing.T) {
 
 func TestUpdateOrganizationForUserWithError(t *testing.T) {
 	user := usersTesting[3]
-	_, token := ObtainTokenForTesting(user)
+	_, token, _:= ObtainTokenForTesting(user)
 
 	router := mux.NewRouter()
 	server := httptest.NewServer(router)
@@ -162,7 +166,7 @@ func TestUpdateRoleForUser(t *testing.T) {
 	user.CreateOrUpdateWithPlainPw()
 	user.Password = usersTesting[0].Password
 
-	_, token := ObtainTokenForTesting(user)
+	_, token, _:= ObtainTokenForTesting(user)
 
 	router := mux.NewRouter()
 	server := httptest.NewServer(router)
@@ -195,7 +199,7 @@ func TestUpdateRoleForUserWithError(t *testing.T) {
 	user.CreateOrUpdateWithPlainPw()
 	user.Password = usersTesting[3].Password
 
-	_, token := ObtainTokenForTesting(user)
+	_, token, _:= ObtainTokenForTesting(user)
 
 	router := mux.NewRouter()
 	server := httptest.NewServer(router)
@@ -213,14 +217,15 @@ func TestUpdateRoleForUserWithError(t *testing.T) {
 
 }
 
-func ObtainTokenForTesting(user models.User) (error, string) {
+func ObtainTokenForTesting(user models.User) (err error, token string, refreshToken string) {
 	_ = SignInHelperMux()
 	loginResponse := LogInHelperWithUser(user)
 	body, _ := ioutil.ReadAll(loginResponse.Body)
 	bodyMap := models.UserResponse{}
-	err := json.Unmarshal(body, &bodyMap)
+	err = json.Unmarshal(body, &bodyMap)
 
-	token := "Bearer " + bodyMap.Data[0].Token
+	token = "Bearer " + bodyMap.Data[0].Token
+	refreshToken = "Bearer " + bodyMap.Data[0].RefreshToken
 
-	return err, token
+	return err, token, refreshToken
 }

@@ -3,8 +3,8 @@ package utils
 import (
 	"auth-service-template/models"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
+	"log"
 )
 
 var usersExamples = []models.User{}
@@ -25,7 +25,7 @@ func GetUsersForTesting() (users []models.User, err error) {
 		for _, f := range files {
 			user, err := readUsersJson(root + "/" + f.Name())
 			if err != nil {
-				fmt.Println(err)
+				log.Println(err)
 				return usersExamples, err
 			}
 			usersExamples = append(usersExamples, user)
@@ -39,12 +39,12 @@ func readUsersJson(path string) (user models.User, err error) {
 	user = models.User{}
 	file, err1 := ioutil.ReadFile(path)
 	if err1 != nil {
-		fmt.Println(err1)
+		log.Println(err1)
 		return user, err1
 	}
 	err2 := json.Unmarshal([]byte(file), &user)
 	if err2 != nil {
-		fmt.Println(err2)
+		log.Println(err2)
 		return user, err2
 	}
 	return user, nil
